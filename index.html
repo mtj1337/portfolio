@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coder Portfolio</title>
+    <style>
+        :root {
+            --nord0: #2E3440;
+            --nord1: #3B4252;
+            --nord2: #434C5E;
+            --nord3: #4C566A;
+            --nord4: #D8DEE9;
+            --nord5: #E5E9F0;
+            --nord6: #ECEFF4;
+            --nord7: #8FBCBB;
+            --nord8: #88C0D0;
+            --nord9: #81A1C1;
+            --nord10: #5E81AC;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--nord0);
+            color: var(--nord4);
+        }
+
+        html {
+            scroll-behavior: auto; 
+        }
+
+        header {
+            background-color: var(--nord1);
+            height: 150px;
+            padding: 0;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: var(--nord6);
+            margin: 0;
+        }
+
+        nav {
+            background-color: var(--nord2);
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--nord6);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--nord7);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 1.5rem;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background-color: var(--nord1);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .project-card img {
+            width: 100%;
+            display: block;
+        }
+
+        .project-card-content {
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .project-card h3 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: var(--nord8);
+        }
+
+        .project-card p {
+            margin: 0.5rem 0;
+            color: var(--nord5);
+        }
+
+        .project-card button {
+            margin-top: 1rem;
+            background-color: var(--nord7);
+            border: none;
+            color: var(--nord0);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .project-card button:hover {
+            background-color: var(--nord8);
+        }
+
+        footer {
+            background-color: var(--nord3);
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+            color: var(--nord5);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--nord8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: var(--nord7);
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .project-card-content {
+                padding: 0.8rem;
+            }
+
+            .project-card h3 {
+                font-size: 1.2rem;
+            }
+
+            .project-card p {
+                font-size: 0.9rem;
+            }
+
+            .project-card button {
+                font-size: 0.9rem;
+                padding: 0.4rem 0.8rem;
+            }
+        }
+
+        #about, #contact {
+            margin-bottom: 3rem;
+        }
+
+        #about h2, #contact h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--nord8);
+            margin-bottom: 1.5rem;
+        }
+
+        #about .content-wrapper, #contact .content-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #about img {
+            border-radius: 50%;
+            max-width: 300px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        #about .bio {
+            max-width: 600px;
+            background-color: var(--nord1);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        #about .bio p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--nord5);
+        }
+
+        #contact .card {
+            max-width: 600px;
+            background-color: var(--nord1);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        #contact .card p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--nord5);
+        }
+
+        #contact .card a {
+            color: var(--nord8);
+            text-decoration: none;
+        }
+
+        #contact button {
+            margin-top: 1.5rem;
+            background-color: var(--nord7);
+            border: none;
+            color: var(--nord0);
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        #contact button:hover {
+            background-color: var(--nord8);
+        }
+
+        #contact button a {
+            text-decoration: none;
+            color: var(--nord0);
+        }
+
+        #contact {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        #projects h2 {
+            font-size: 2.5rem;
+            color: var(--nord8); 
+            text-align: center; 
+            margin-bottom: 1.5rem; 
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Matěj Ryšlavý - Web Developer</h1>
+    </header>
+
+    <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="container">
+        <section id="about">
+            <h2>About me</h2>
+            <div class="content-wrapper">
+                <div class="bio">
+                  <p>Hi! My name is Matěj, and I’m a 14-year-old web developer from the Czech Republic. I love creating modern and functional websites that blend aesthetics with simplicity and efficiency.</p>
+                  <p>I’ve been passionate about programming from a young age, starting with HTML and CSS. Today, I work on a variety of projects, from personal portfolios to more complex web applications.</p>
+                  <p>I’m always eager to learn new technologies and follow trends in web development to continuously improve my skills and take my work to the next level.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="project-card-content">
+                        <h3>To-Do List</h3>
+                        <p>This project is a simple yet intuitive To-Do List application built using Python's Tkinter and CustomTkinter libraries. Designed for managing daily tasks effectively, it provides users with an easy-to-use interface and essential functionality to stay organized.</p>
+                        <button><a href="https://github.com/mtj1337/ToDo-List" style="color: inherit; text-decoration: none;">View Details</a></button>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-card-content">
+                        <h3>Christmas Countdown</h3>
+                        <p>This project is a dynamic and visually appealing countdown timer for Christmas, created entirely using HTML, CSS, and JavaScript. It was one of my first explorations into JavaScript, where I learned how to work with dates, timers, and DOM manipulation.</p>
+              
+                        <button><a href="hhttps://github.com/mtj1337/Christmas-Countdown" style="color: inherit; text-decoration: none;">View Details</a></button>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <div class="card">
+                <p>Feel free to get in touch with me! Whether you have a question about one of my projects, want to discuss a potential collaboration, or simply want to say hi, I’d be happy to hear from you. You can reach me via email, and I’ll get back to you as soon as possible!</p>
+                <a href="mailto:info@matejryslavy.dev">
+                    <button>Email Me</button>
+                </a>                  
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>Designed by <strong>mtj1337</strong>. Powered by the Nord color palette.</p>
+    </footer>
+
+    <script>
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.documentElement.style.scrollBehavior = 'smooth';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
